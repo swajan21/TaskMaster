@@ -1,0 +1,35 @@
+{% extends "tasks/base.html" %} 
+{% block content %}
+
+<div class="container mt-5" style="max-width: 480px">
+  <div class="card border-danger shadow rounded-4">
+    <div
+      class="card-header bg-danger text-white text-center rounded-top-4 py-3"
+    >
+      <h3 class="mb-0 fw-bold">Confirm Delete</h3>
+    </div>
+    <div class="card-body text-center p-4">
+      <p class="fs-5 mb-4">
+        Are you sure you want to delete the task
+        <span class="fw-semibold text-danger">&quot;{{ task.title }}&quot;</span
+        >?
+      </p>
+      <form method="post" class="d-flex justify-content-center gap-3">
+        {% csrf_token %}
+        <button
+          type="submit"
+          class="btn btn-danger btn-sm px-4 rounded-pill shadow-sm"
+        >
+          Delete
+        </button>
+        <a
+          href="{% url 'tasks:task-list' %}"
+          class="btn btn-secondary btn-sm px-4 rounded-pill shadow-sm"
+        >
+          Cancel
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

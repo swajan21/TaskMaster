@@ -1,0 +1,80 @@
+{% extends "tasks/base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">📝 My Tasks</h2>
+
+  <!-- Filter Form -->
+  <form method="get" class="row g-3 justify-content-center mb-4">
+    <div class="col-md-3">
+      <select name="status" class="form-select">
+        <option value="">📋 All Status</option>
+        <option value="pending" {% if status == 'pending' %}selected{% endif %}>⏳ Pending</option>
+        <option value="completed" {% if status == 'completed' %}selected{% endif %}>✅ Completed</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select name="priority" class="form-select">
+        <option value="">🔥 All Priority</option>
+        <option value="low" {% if priority == 'low' %}selected{% endif %}>🟢 Low</option>
+        <option value="medium" {% if priority == 'medium' %}selected{% endif %}>🟠 Medium</option>
+        <option value="high" {% if priority == 'high' %}selected{% endif %}>🔴 High</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-outline-secondary w-100">🔍 Filter</button>
+    </div>
+  </form>
+
+  <!-- Task Table -->
+  <div class="card shadow">
+    <div class="card-body">
+      <table class="table table-hover align-middle">
+        <thead class="table-info text-center">
+          <tr>
+            <th>Title</th>
+            <th>Due Date</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for task in tasks %}
+            <tr class="text-center {% if task.is_overdue %}table-danger{% endif %}">
+              <td class="fw-bold">{{ task.title }}</td>
+              <td>{{ task.due_date|date:"M d, Y" }}</td>
+              <td>
+                {% if task.priority == "high" %}
+                  <span class="badge bg-danger">High</span>
+                {% elif task.priority == "medium" %}
+                  <span class="badge bg-warning text-dark">Medium</span>
+                {% else %}
+                  <span class="badge bg-success">Low</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if task.completed %}
+                  <span class="badge bg-success">Completed</span>
+                {% else %}
+                  <span class="badge bg-secondary">Pending</span>
+                {% endif %}
+              </td>
+              <td>
+                <a href="{% url 'tasks:task-detail' task.pk %}" class="btn btn-outline-success btn-sm">View Details</a>
+                <a href="{% url 'tasks:task-update' task.pk %}" class="btn btn-sm btn-outline-primary me-1" title="Edit Task">✏️</a>
+                <a href="{% url 'tasks:task-delete' task.pk %}" class="btn btn-sm btn-outline-danger" title="Delete Task">🗑️</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="5" class="text-center text-muted py-4">No tasks found. ✅</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

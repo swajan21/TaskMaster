@@ -1,0 +1,73 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom py-3">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="{% url 'tasks:task-list' %}">
+       <span class="text-dark">Task</span><span class="text-primary">Master</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+
+      {% if user.is_authenticated %}
+      <!-- Filter Form -->
+      <form class="d-flex align-items-center gap-2 ms-4" method="get" action="{% url 'tasks:task-list' %}">
+        <div>
+          <select name="status" class="form-select form-select-sm">
+            <option value="">📋 All Status</option>
+            <option value="pending" {% if status == 'pending' %}selected{% endif %}>⏳ Pending</option>
+            <option value="completed" {% if status == 'completed' %}selected{% endif %}>✅ Completed</option>
+          </select>
+        </div>
+        <div>
+          <select name="priority" class="form-select form-select-sm">
+            <option value="">🔥 All Priority</option>
+            <option value="low" {% if priority == 'low' %}selected{% endif %}>🟢 Low</option>
+            <option value="medium" {% if priority == 'medium' %}selected{% endif %}>🟠 Medium</option>
+            <option value="high" {% if priority == 'high' %}selected{% endif %}>🔴 High</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-outline-primary btn-sm">🔍 Filter</button>
+      </form>
+      {% endif %}
+
+      <!-- Main Links -->
+      <ul class="navbar-nav ms-auto align-items-center gap-3">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-bold" href="{% url 'tasks:task-list' %}">📋 Task List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-bold" href="{% url 'tasks:task-create' %}">➕ Create Task</a>
+        </li>
+        {% endif %}
+      </ul>
+
+      <!-- Auth Section -->
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav align-items-center gap-3 ms-4">
+        <li class="nav-item">
+          <span class="navbar-text fw-bold text-success">👤 {{ user.username }}</span>
+        </li><br><br><br>
+        <li class="nav-item">
+          <form method="post" action="{% url 'tasks:logout' %}">
+            {% csrf_token %}
+            <button class="btn btn-outline-danger btn-sm text-dark fw-bold" type="submit">🚪 Logout</button>
+          </form>
+        </li>
+      </ul>
+      {% else %}
+      <ul class="navbar-nav align-items-center gap-3 ms-auto">
+        <li class="nav-item">
+          <a class="btn btn-light btn-sm text-dark fw-bold" href="{% url 'tasks:register' %}">🧾 Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-light btn-sm text-dark fw-bold" href="{% url 'tasks:login' %}">🔐 Login</a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>
