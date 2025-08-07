@@ -77,10 +77,10 @@ taskmaster/
    ```
 **Open in browser:**
    Visit `http://127.0.0.1:8000/`
-**Register:** 
-- Use short name and create strong password 8 cheracter
-**Login:**
-- user name and password  
+## Register:** 
+   Use short name and create strong password 8 cheracter
+## Login:**
+   user name and password  
    
 
 - You can use this project as a foundation for more advanced task management tools.
