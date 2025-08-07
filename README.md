@@ -84,7 +84,19 @@ taskmaster/
    
 ## 📸 Screenshot
 
-![Create Task](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Create%20Task.png))
+![Create Task](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Create%20Task.png)
+
+![Delete Task](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Delete%20Task.png)
+
+![Login](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Login.png)
+
+![Register](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Registar.png)
+
+![Task Details](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Task%20Details.png)
+
+![Task list](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Task%20List.png)
+
+![Update Task](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Update%20Task.png)
 
 
 - You can use this project as a foundation for more advanced task management tools.
