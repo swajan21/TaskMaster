@@ -82,9 +82,15 @@ taskmaster/
 ## Login:
    user name and password  
    
+## 📸 Screenshot
+
+![Create Task](https://github.com/swajan21/TaskMaster/blob/main/taskmaster/Screenshot/Create%20Task.png))
+
 
 - You can use this project as a foundation for more advanced task management tools.
 - Customize styles using Bootstrap or your own CSS.
 - Extend features like recurring tasks, collaboration, or notifications.
 
 ---
+
+
