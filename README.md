@@ -62,7 +62,6 @@ taskmaster/
 │   ├── forms.py
 │   └── templates/
 |   └── static/
-├── templates/
 ├── manage.py
 └── README.md
 ```
