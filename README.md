@@ -77,9 +77,9 @@ taskmaster/
    ```
 **Open in browser:**
    Visit `http://127.0.0.1:8000/`
-## Register:** 
+## Register: 
    Use short name and create strong password 8 cheracter
-## Login:**
+## Login:
    user name and password  
    
 
